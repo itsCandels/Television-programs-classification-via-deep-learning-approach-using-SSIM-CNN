@@ -2,7 +2,6 @@
 
 ![Description of MASK](MASK.png)
 
-
 This project focuses on image and video classification by leveraging deep learning models and similarity-based metrics. It includes two main components:
 1. **Training a ResNet50-based classification model**.
 2. **Classifying video frames based on similarity and model predictions**.
@@ -31,38 +30,58 @@ project-directory/
 ├── RESULTS/             # Output directory for classification results
 └── VIDEO_PATHS.csv      # Tracks processed video paths
 
-Requirements
-Python Packages
+---
+
+## Requirements
+
+### Python Packages
 Install the required packages using pip:
 
+```bash
 pip install tensorflow scikit-image numpy pandas matplotlib argparse opencv-python imutils
+```
 
-Additional Dependencies
-GPU Acceleration: Install TensorFlow GPU if supported by your system for faster training.
-Pre-trained ResNet50 weights: Automatically downloaded by Keras.
+### Additional Dependencies
+- **GPU Acceleration**: Install TensorFlow GPU if supported by your system for faster training.
+- **Pre-trained ResNet50 weights**: Automatically downloaded by Keras.
 
-Usage
-Training the Model
+---
+
+## Usage
+
+### Training the Model
 To train the ResNet50-based model on a custom dataset:
+```bash
 python train.py --dataset <path-to-dataset> \
                 --model models/activity.model \
                 --label-bin models/lb.pickle \
                 --epochs 50 \
                 --plot plot.png
+```
 
---dataset: Path to the dataset folder. Images should be organized in subdirectories by class.
---model: Path to save the trained model.
---label-bin: Path to save the label binarizer.
---epochs: Number of epochs for training.
---plot: Path to save the training loss/accuracy plot.
+- `--dataset`: Path to the dataset folder. Images should be organized in subdirectories by class.
+- `--model`: Path to save the trained model.
+- `--label-bin`: Path to save the label binarizer.
+- `--epochs`: Number of epochs for training.
+- `--plot`: Path to save the training loss/accuracy plot.
 
-Classifying Video Frames
+---
+
+### Classifying Video Frames
 To process video frames and classify them using a trained model:
 
+```bash
 python final_network.py --model models/activity.model \
                         --label-bin models/lb.pickle \
                         --size 128
+```
 
+---
+
+## Dataset Organization
+
+For training:
+```plaintext
 data/
 ├── class1/
 │   ├── image1.jpg
@@ -73,41 +92,56 @@ data/
 │   ├── image2.jpg
 │   └── ...
 └── ...
+```
 
 For video processing:
+- Place reference images in `DISCRIMINATORI_LAC_RESIZE/`.
+- Place videos in `Example_Clips/`.
 
-Place reference images in DISCRIMINATORI_LAC_RESIZE/.
-Place videos in Example_Clips/
+---
 
-Outputs
-Trained Model:
-Stored in the path specified by --model.
-Classification Results:
-Stored as .csv files in the RESULTS/ directory.
-Training Metrics:
-Saved as a plot (plot.png) showing loss and accuracy trends.
+## Outputs
 
-Examples
-Training Example
+1. **Trained Model**:
+   - Stored in the path specified by `--model`.
+2. **Classification Results**:
+   - Stored as `.csv` files in the `RESULTS/` directory.
+3. **Training Metrics**:
+   - Saved as a plot (`plot.png`) showing loss and accuracy trends.
+
+---
+
+## Examples
+
+### Training Example
+```bash
 python train.py --dataset ./data \
                 --model ./models/activity.model \
                 --label-bin ./models/lb.pickle \
                 --epochs 25 \
                 --plot ./plot.png
+```
 
-Video Processing Example
+### Video Processing Example
+```bash
 python final_network.py --model ./models/activity.model \
                         --label-bin ./models/lb.pickle \
                         --size 128
+```
 
-Notes
-Ensure that VIDEO_PATHS.csv is present to track processed videos.
-Use a GPU for faster processing, especially when training or processing high-resolution videos.
+---
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+## Notes
+- Ensure that `VIDEO_PATHS.csv` is present to track processed videos.
+- Use a GPU for faster processing, especially when training or processing high-resolution videos.
 
-Contributors
-Federico Candela
-Maurizio Campolo
-![image](https://github.com/user-attachments/assets/466d6a20-9c2d-4fb3-aa45-ac88d98f0978)
+---
+
+## License
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+---
+
+## Contributors
+- **Federico Candela**
+- **Maurizio Campolo**
