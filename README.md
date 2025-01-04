@@ -18,7 +18,7 @@ This project focuses on image and video classification by leveraging deep learni
 ---
 
 ## Project Structure
-
+```
 project-directory/
 ├── train.py             # Script for training the ResNet50-based classifier
 ├── final_network.py     # Script for processing and classifying video frames
@@ -29,7 +29,7 @@ project-directory/
 ├── DISCRIMINATORI_LAC_RESIZE/ # Reference images for similarity comparison
 ├── RESULTS/             # Output directory for classification results
 └── VIDEO_PATHS.csv      # Tracks processed video paths
-
+```
 ---
 
 ## Requirements
